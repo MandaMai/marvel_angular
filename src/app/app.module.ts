@@ -6,14 +6,13 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { MarvelService } from './marvel.service';
-import { PresentationComponent } from './presentation/presentation.component';
+// import { PresentationComponent } from './presentation/presentation.component';
 import * as $ from 'jquery';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavigationComponent,
-    PresentationComponent
+    NavigationComponent
   ],
   imports: [
     BrowserModule,

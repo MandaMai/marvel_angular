@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { MarvelService } from './marvel.service';
 
 @Component({
   selector: 'app-root',
@@ -7,8 +8,37 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
-  title = 'Marvel';
+  heroInfo;
+  @Input() searchTerm;
   
-    ngOnInit(){
+  
+    constructor(private marvelService: MarvelService){}
+
+    getDataFromService(){
+      this.marvelService.getHeroInfo(' ')
+        .subscribe(
+          heroInfo => {
+            this.heroInfo = heroInfo.data.results;
+            console.log(this.heroInfo)
+            // console.log(this.heroInfo.length)
+          }
+        )
     }
+
+    getDataFromSearch(searchTerm) {
+      // console.log("made it here")
+      // console.log(searchTerm);
+      this.marvelService.getHeroInfo("&nameStartsWith="+searchTerm)
+      .subscribe(
+        heroInfo => {
+          this.heroInfo = heroInfo.data.results;
+        }
+      )
+    }
+
+  ngOnInit() {
+    this.getDataFromService()
+  }
+
 }
+

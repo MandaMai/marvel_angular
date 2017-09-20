@@ -7,26 +7,14 @@ import 'rxjs/add/operator/map';
 export class MarvelService {
   
   private baseUrl: string = "http://gateway.marvel.com/v1/public/characters?ts=1&apikey=8c341eb8a8058fa06e30e3cd5c608bc2&hash=ee5c3bb981328e44a00878da4bad4323&limit=100";
-  // let apiKey = "ts=1&apikey=8c341eb8a8058fa06e30e3cd5c608bc2&hash=ee5c3bb981328e44a00878da4bad4323"
-  // let apiUrl = "http://gateway.marvel.com/v1/public/characters?ts=1&apikey=8c341eb8a8058fa06e30e3cd5c608bc2&hash=ee5c3bb981328e44a00878da4bad4323&limit=100"
-    constructor(private http: Http) { }
   
-    getHeroInfo(): Observable<any> {
+  constructor(private http: Http) { }
   
-      return this.http.get(this.baseUrl)
+    getHeroInfo(searchItem: string): Observable<any> {
+  
+      return this.http.get(this.baseUrl+searchItem)
         .map(result => {
           return result.json()
         })
-  
     }
-
-    getSearchInfo(searchTerm): Observable<any> {
-      
-          return this.http.get(this.baseUrl+"&nameStartsWith="+searchTerm)
-            .map(result => {
-              return result.json()
-            })
-      
-        }
-
 }

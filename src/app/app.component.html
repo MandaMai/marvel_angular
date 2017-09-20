@@ -1,10 +1,24 @@
-<app-navigation></app-navigation>
+<app-navigation #navigation (newList)="getDataFromSearch($event)"></app-navigation>
 <!-- <app-favorite-things #favoriteThingsAttributes (thingSelected)="catchThingSelected($event)" [title]="title"></app-favorite-things> -->
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center" class="header">
-  <h1>Welcome to {{title}}!</h1>
+  <h1>Marvel Characters!</h1>
 </div>
-<app-presentation></app-presentation>
+<div class="row">
+    <div class="col-sm-4 col-md-3 tile" *ngFor="let hero of heroInfo">
+      <div class="thumbnail">
+        <h3>{{hero.name}}</h3>
+        <img src='{{hero.thumbnail.path}}/standard_fantastic.{{hero.thumbnail.extension}}' alt="...">
+        <div class="caption">
+          <!-- <button class="btn btn-default getDetails"><a ng-href="http://www.google.com">{{hero.name}}</a></button> -->
+          <a type="button" href="{{hero.urls[0].url}}" class="btn btn-default getDetails" target="_blank">Details</a>
+          <a type="button" href="{{hero.urls[1].url}}" class="btn btn-default getDetails" target="_blank">Wiki Page</a>
+          <!-- <p>...</p> -->
+          <!-- <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p> -->
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 

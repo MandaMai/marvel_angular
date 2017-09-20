@@ -10,46 +10,21 @@ import { MarvelService } from '../marvel.service';
 })
 export class NavigationComponent implements OnInit {
   searchTerm: string;
-  @Input() questionInfo;
-  @Output() newList = new EventEmitter<void>();
-  heroInfo;
+  // @Input() questionInfo;
+  @Output() newList = new EventEmitter<string>();
+ 
+
   constructor(private marvelService: MarvelService){}
 
 
   searchNewUrl() {
-    console.log(this.searchTerm);
-    this.marvelService.getSearchInfo(this.searchTerm)
-    .subscribe(
-      heroInfo => {
-        this.heroInfo = heroInfo.data.results;
-        console.log(this.heroInfo)
-        console.log(this.heroInfo.length)
-        //how to update list on page?
-      }
-
-    )
-    this.newList.emit(this.heroInfo);
+    if(this.searchTerm == null) {alert ("You need to put something in here if you want to search for something. Even the invisible man has a name!")
+      }else{
+      console.log(this.searchTerm);
+    this.newList.emit(this.searchTerm);
     $("#searchBox").val("");
-    
-
-    }//update user score if answer is correct
-    // getSearchResults(){
-    //   this.marvelService.getSearchInfo(searchTerm)
-    //     .subscribe(
-    //       heroInfo => {
-    //         this.heroInfo = heroInfo.data.results;
-    //         console.log(this.heroInfo)
-    //         console.log(this.heroInfo.length)
-            
-    //       }
-    //     )
-    // }
-   
-  
-    // this.completedValidation2.emit("the string from the child");
-    // this.getDataFromService();//get new question
-  
-  // searchUrl = apiUrl + "&nameStartsWith=" + userInput;
+    }//end else
+    }
   ngOnInit() {
   }
 
