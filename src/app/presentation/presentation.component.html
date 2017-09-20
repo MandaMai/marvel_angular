@@ -1,0 +1,20 @@
+<!-- for presentation component -->
+<div class="row">
+    <div class="col-sm-4 col-md-3 tile" *ngFor="let hero of heroInfo">
+      <div class="thumbnail">
+        <img src='{{hero.thumbnail.path}}/standard_fantastic.{{hero.thumbnail.extension}}' alt="...">
+        <div class="caption">
+          <button class="btn btn-default"><h3>{{hero.name}}</h3></button>
+          <!-- <p>...</p> -->
+          <!-- <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div *ngIf="selectedThing">The favorite thing I selected is: 
+      <input type="text" [(ngModel)]="selectedThing.id">
+      <br>
+      <input type="text" [(ngModel)]="selectedThing.name">
+      
+    </div> -->
